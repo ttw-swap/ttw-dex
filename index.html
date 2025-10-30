@@ -1,73 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
   <title>TTW Swap</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- WalletConnect + Web3Modal -->
-  <script src="https://unpkg.com/@web3modal/wagmi@3.5.7/dist/index.js"></script>
-  <script src="https://unpkg.com/ethers@6.8.3/dist/ethers.umd.min.js"></script>
+  <!-- Web3Modal -->
+  <script src="https://unpkg.com/@web3modal/wagmi@3.5.8/dist/wagmi.umd.js"></script>
+
+  <!-- Ethers.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.8.1/ethers.umd.min.js"></script>
 
   <style>
     body {
-      font-family: Arial;
-      padding: 16px;
-      background: linear-gradient(135deg, #1a1f36, #121522, #1a1f36);
-      background-size: 300% 300%;
-      animation: bg 14s infinite alternate;
-      color: white;
+      background: #0a0a0a;
+      color: #fff;
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 20px;
     }
-    @keyframes bg {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
+
     .card {
-      padding: 16px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      margin-top: 15px;
-      backdrop-filter: blur(6px);
+      background: #181818;
+      padding: 20px;
+      border-radius: 10px;
+      width: 320px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      animation: glow 3s infinite alternate;
     }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-size: 16px;
-      border: none;
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #4fc3f7; }
+      to { box-shadow: 0 0 25px #ff6ec7; }
     }
+
     input {
-      background: rgba(255,255,255,0.2);
-      color: white;
+      width: 90%;
+      padding: 10px;
+      margin-top: 12px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      background: #111;
+      color: #fff;
+      font-size: 16px;
     }
+
     button {
-      background: #4caf50;
-      color: white;
-      font-weight: bold;
-      transition: 0.25s;
+      width: 90%;
+      padding: 12px;
+      margin-top: 14px;
+      background: #4fc3f7;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
     }
-    button:hover { background: #68d66b; }
+
+    button:hover {
+      background: #ff6ec7;
+    }
+
+    #status {
+      margin-top: 12px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
   </style>
 </head>
+
 <body>
 
-<h2>TTW Swap</h2>
+  <h1>TTW Swap</h1>
 
-<div class="card">
+  <div id="walletAddress"></div>
+
   <button id="connectBtn">Connect Wallet</button>
-  <p id="walletAddress"></p>
-</div>
 
-<div class="card">
-  <input type="number" id="amount" placeholder="Enter TTW Amount">
-  <button id="approveBtn">Approve TTW</button>
-  <button id="swapBtn">Swap TTW → USDT</button>
-  <p id="status"></p>
-</div>
+  <div class="card">
+    <h3>Swap TTW → USDT</h3>
 
-<script src="app.js"></script>
+    <input type="number" id="amount" placeholder="Enter TTW amount"/>
+
+    <button id="approveBtn">Approve</button>
+    <button id="swapBtn">Swap</button>
+
+    <div id="status"></div>
+  </div>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
