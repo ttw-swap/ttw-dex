@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TTW Swap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- WalletConnect + Web3Modal -->
+  <script src="https://unpkg.com/@web3modal/wagmi@3.5.7/dist/index.js"></script>
+  <script src="https://unpkg.com/ethers@6.8.3/dist/ethers.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 16px;
+      background: linear-gradient(135deg, #1a1f36, #121522, #1a1f36);
+      background-size: 300% 300%;
+      animation: bg 14s infinite alternate;
+      color: white;
+      text-align: center;
+    }
+    @keyframes bg {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .card {
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      margin-top: 15px;
+      backdrop-filter: blur(6px);
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+    }
+    input {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+    button {
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+    button:hover { background: #68d66b; }
+  </style>
+</head>
+<body>
+
+<h2>TTW Swap</h2>
+
+<div class="card">
+  <button id="connectBtn">Connect Wallet</button>
+  <p id="walletAddress"></p>
+</div>
+
+<div class="card">
+  <input type="number" id="amount" placeholder="Enter TTW Amount">
+  <button id="approveBtn">Approve TTW</button>
+  <button id="swapBtn">Swap TTW → USDT</button>
+  <p id="status"></p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
